@@ -1,0 +1,105 @@
+{
+  "common": {
+    "learnMore": "Learn More",
+    "viewAll": "View All",
+    "readMore": "Read More",
+    "applyNow": "Apply Now",
+    "contactUs": "Contact Us",
+    "exploreMore": "Explore More"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "academics": "Academics",
+    "admissions": "Admissions",
+    "research": "Research",
+    "news": "News & Events",
+    "contact": "Contact"
+  },
+  "home": {
+    "hero": {
+      "title": "Institute of Digital Technology",
+      "subtitle": "Leading public research and education institution dedicated to accelerating a vibrant, inclusive, and sustainable digital society.",
+      "cta": "Explore Programs"
+    },
+    "highlights": {
+      "title": "Today's Highlights",
+      "featured": {
+        "title": "Celebrate Best Digital Research and Innovation of 2025",
+        "description": "Cambodia AMR Predicting Application (CAMRA) - The innovative breakthrough that showcases our commitment to technological advancement."
+      }
+    },
+    "institutes": {
+      "title": "We have three Institutes and each has mission focus on digital technologies development for the future.",
+      "items": [
+        "Institute of Digital Technology",
+        "Institute of Digital Research",
+        "Institute of Digital Innovation"
+      ]
+    },
+    "programs": {
+      "title": "Explore Our Academic Programs",
+      "undergraduate": {
+        "title": "Undergraduate Degree (Bachelor)",
+        "description": "Comprehensive 4-year programs designed to build strong foundations in digital technology and innovation."
+      },
+      "graduate": {
+        "title": "Graduate Degree (Master)",
+        "description": "Advanced research-focused programs for professionals seeking to deepen their expertise in specialized fields."
+      },
+      "scholarship": {
+        "title": "Get Support For Your Learning Journey",
+        "description": "Learn About Scholarships and financial aid opportunities available for qualified students."
+      }
+    },
+    "research": {
+      "title": "Research & Innovation",
+      "description": "Our groundbreaking research, meticulously guided by our Tech Transfer Office, is transformed into impactful, innovative, and market-ready products."
+    },
+    "faculty": {
+      "title": "Meet Faculty Members",
+      "description": "Learn from distinguished professors and industry experts dedicated to nurturing the next generation of digital leaders."
+    },
+    "milestone": {
+      "title": "10 Years of Nurturing Digital Talents, Digital Research, and Innovation",
+      "description": "A decade of excellence in producing world-class graduates who lead Cambodia's digital transformation journey.",
+      "cta": "See Our Milestone"
+    },
+    "events": {
+      "title": "Highlighted Events",
+      "viewAll": "View All Events"
+    },
+    "news": {
+      "title": "Recent News",
+      "viewAll": "View All News"
+    },
+    "cta": {
+      "title": "Stay Connected",
+      "description": "Subscribe to our newsletter for the latest updates on programs, events, and opportunities.",
+      "placeholder": "Enter your email",
+      "button": "Subscribe"
+    }
+  },
+  "footer": {
+    "address": {
+      "title": "Address",
+      "line1": "National Road 6A, Prek Leap",
+      "line2": "Chroy Changvar, Phnom Penh",
+      "line3": "Cambodia"
+    },
+    "institutes": {
+      "title": "Institutes",
+      "idt": "Institute of Digital Technology",
+      "idr": "Institute of Digital Research",
+      "idi": "Institute of Digital Innovation"
+    },
+    "links": {
+      "title": "Information Links",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "careers": "Careers",
+      "faq": "FAQ"
+    },
+    "copyright": "© {{year}} Institute of Digital Technology. All rights reserved."
+  }
+}

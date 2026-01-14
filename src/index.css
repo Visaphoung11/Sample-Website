@@ -1,0 +1,230 @@
+@import "@fontsource/kantumruy-pro/400.css";
+@import "@fontsource/kantumruy-pro/500.css";
+@import "@fontsource/kantumruy-pro/600.css";
+@import "@fontsource/kantumruy-pro/700.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Institute Design System - Academic Tech-Forward Aesthetic */
+
+@layer base {
+  :root {
+    /* Core Brand Colors - Deep Navy & Vibrant Orange */
+    --background: 210 20% 98%;
+    --foreground: 213 37% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 213 37% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 213 37% 15%;
+
+    /* Primary: Deep Academic Navy */
+    --primary: 213 55% 25%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary: Light Blue Gray */
+    --secondary: 210 25% 95%;
+    --secondary-foreground: 213 37% 15%;
+
+    /* Accent: Vibrant Orange */
+    --accent: 32 95% 54%;
+    --accent-foreground: 0 0% 100%;
+
+    --muted: 210 20% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 20% 90%;
+    --input: 214 20% 90%;
+    --ring: 213 55% 25%;
+
+    --radius: 0.5rem;
+
+    /* Extended Palette */
+    --navy-dark: 213 60% 18%;
+    --navy-light: 213 45% 35%;
+    --orange-light: 32 100% 65%;
+    --orange-dark: 32 90% 45%;
+    --blue-accent: 205 85% 50%;
+    --success: 145 63% 42%;
+    --gray-warm: 30 10% 96%;
+
+    /* Sidebar */
+    --sidebar-background: 213 55% 25%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 32 95% 54%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 213 45% 35%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 213 40% 30%;
+    --sidebar-ring: 32 95% 54%;
+
+    /* Typography */
+    --font-sans: "Kantumruy Pro", system-ui, sans-serif;
+
+    /* Shadows */
+    --shadow-soft: 0 2px 8px -2px hsl(213 55% 25% / 0.08);
+    --shadow-card: 0 4px 20px -4px hsl(213 55% 25% / 0.12);
+    --shadow-elevated: 0 8px 30px -6px hsl(213 55% 25% / 0.18);
+    --shadow-accent: 0 4px 20px -4px hsl(32 95% 54% / 0.3);
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(
+      135deg,
+      hsl(213 55% 25%) 0%,
+      hsl(213 60% 18%) 100%
+    );
+    --gradient-accent: linear-gradient(
+      135deg,
+      hsl(32 95% 54%) 0%,
+      hsl(32 90% 45%) 100%
+    );
+    --gradient-card: linear-gradient(
+      180deg,
+      hsl(0 0% 100%) 0%,
+      hsl(210 20% 98%) 100%
+    );
+    --gradient-overlay: linear-gradient(
+      0deg,
+      hsl(213 55% 25% / 0.85) 0%,
+      hsl(213 55% 25% / 0.4) 100%
+    );
+  }
+
+  .dark {
+    --background: 213 37% 8%;
+    --foreground: 210 20% 98%;
+
+    --card: 213 37% 12%;
+    --card-foreground: 210 20% 98%;
+
+    --popover: 213 37% 12%;
+    --popover-foreground: 210 20% 98%;
+
+    --primary: 32 95% 54%;
+    --primary-foreground: 213 55% 15%;
+
+    --secondary: 213 30% 18%;
+    --secondary-foreground: 210 20% 98%;
+
+    --accent: 32 95% 54%;
+    --accent-foreground: 0 0% 100%;
+
+    --muted: 213 30% 18%;
+    --muted-foreground: 215 20% 65%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 20% 98%;
+
+    --border: 213 30% 22%;
+    --input: 213 30% 22%;
+    --ring: 32 95% 54%;
+
+    --sidebar-background: 213 37% 10%;
+    --sidebar-foreground: 210 20% 95%;
+    --sidebar-primary: 32 95% 54%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 213 30% 20%;
+    --sidebar-accent-foreground: 210 20% 95%;
+    --sidebar-border: 213 30% 18%;
+    --sidebar-ring: 32 95% 54%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-semibold tracking-tight text-foreground;
+  }
+}
+
+@layer components {
+  /* Section Styling */
+  .section-padding {
+    @apply py-16 md:py-24 px-4 md:px-8;
+  }
+
+  .section-title {
+    @apply text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-2;
+  }
+
+  .section-subtitle {
+    @apply text-muted-foreground text-base md:text-lg max-w-2xl;
+  }
+
+  /* Card Styles */
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-elevated hover:-translate-y-1;
+  }
+
+  /* Container */
+  .container-institute {
+    @apply max-w-7xl mx-auto px-4 md:px-6 lg:px-8;
+  }
+
+  /* Accent Bar */
+  .accent-bar {
+    @apply w-16 h-1 bg-accent rounded-full;
+  }
+}
+
+@layer utilities {
+  .text-gradient-primary {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-hero);
+  }
+
+  .text-gradient-accent {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-accent);
+  }
+
+  .bg-gradient-hero {
+    background-image: var(--gradient-hero);
+  }
+
+  .bg-gradient-accent {
+    background-image: var(--gradient-accent);
+  }
+
+  .bg-gradient-overlay {
+    background-image: var(--gradient-overlay);
+  }
+
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+
+  .shadow-accent {
+    box-shadow: var(--shadow-accent);
+  }
+}
