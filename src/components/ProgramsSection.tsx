@@ -39,7 +39,9 @@ const ProgramsSection = () => {
                   className="bg-card rounded-2xl p-6 shadow-card card-hover animate-fade-in-up"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <div className={`w-14 h-14 ${program.color} rounded-xl flex items-center justify-center mb-5`}>
+                  <div
+                    className={`w-14 h-14 ${program.color} rounded-xl flex items-center justify-center mb-5`}
+                  >
                     <Icon className="text-primary-foreground" size={28} />
                   </div>
                   <h3 className="text-xl font-semibold text-foreground mb-3">
@@ -60,13 +62,16 @@ const ProgramsSection = () => {
             })}
 
             {/* Scholarship Card */}
-            <div className="sm:col-span-2 bg-primary rounded-2xl p-6 md:p-8 shadow-elevated text-primary-foreground animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
+            <div
+              className="sm:col-span-2 bg-primary rounded-2xl p-6 md:p-8 shadow-elevated text-primary-foreground animate-fade-in-up"
+              style={{ animationDelay: "0.2s" }}
+            >
               <div className="flex flex-col md:flex-row md:items-center gap-6">
                 <div className="flex-1">
                   <div className="w-14 h-14 bg-accent rounded-xl flex items-center justify-center mb-5">
                     <Award className="text-accent-foreground" size={28} />
                   </div>
-                  <h3 className="text-xl font-semibold mb-3">
+                  <h3 className="text-xl font-semibold text-white mb-3">
                     {t("scholarship.title")}
                   </h3>
                   <p className="text-primary-foreground/80 leading-relaxed">
@@ -90,7 +95,9 @@ const ProgramsSection = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-6">
-                <p className="text-primary-foreground/90 text-sm mb-2">Explore our</p>
+                <p className="text-primary-foreground/90 text-sm mb-2">
+                  Explore our
+                </p>
                 <h4 className="text-primary-foreground font-semibold text-lg">
                   State-of-the-art Facilities
                 </h4>

@@ -1,6 +1,6 @@
 import { useTranslations, setLocale, useLocale } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
-import { Menu, X, ChevronDown, Search, Globe } from "lucide-react";
+import { Menu, X, ChevronDown, Search } from "lucide-react";
 import { useState, startTransition } from "react";
 import {
   DropdownMenu,
@@ -9,86 +9,98 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import citaLogo from "@/assets/cita-logo.png";
+import khFlag from "@/assets/flags/kh.svg";
+import usFlag from "@/assets/flags/us.svg";
+import CambodiaFlag from "@/assets/flags/Cambodia.svg";
 
 const Header = () => {
   const t = useTranslations("nav");
   const currentLocale = useLocale();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [langOpen, setLangOpen] = useState(false);
+  const [langOpenDesktop, setLangOpenDesktop] = useState(false);
+  const [langOpenMobile, setLangOpenMobile] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState<Record<string, boolean>>({});
 
   const handleLocaleChange = (locale: string) => {
-    setLangOpen(false); // close dropdown first
+    // close both dropdowns if any is open
+    setLangOpenDesktop(false);
+    setLangOpenMobile(false);
     // Defer and transition the locale update to avoid UI flicker
     setTimeout(() => {
       startTransition(() => {
         setLocale(locale);
       });
     }, 50);
+    // Close mobile menu after switching, to mirror desktop behavior
+    if (isMenuOpen) {
+      setIsMenuOpen(false);
+    }
   };
 
   const topNavItems = [
-    { key: "careers", label: "CAREERS", href: "#careers" },
-    { key: "govtech", label: "GOVTECH", href: "#govtech" },
-    { key: "events", label: "EVENTS", href: "#events" },
-    { key: "resources", label: "RESOURCES", href: "#resources" },
-    { key: "careerCenter", label: "CAREER CENTER", href: "#career-center" },
+    { key: "careers", label: t("top.careers"), href: "#careers" },
+    { key: "govtech", label: t("top.govtech"), href: "#govtech" },
+    { key: "events", label: t("top.events"), href: "#events" },
+    { key: "resources", label: t("top.resources"), href: "#resources" },
+    {
+      key: "careerCenter",
+      label: t("top.careerCenter"),
+      href: "#career-center",
+    },
   ];
 
   const mainNavItems = [
     {
       key: "about",
-      label: "About",
+      label: t("main.about.label"),
       dropdown: [
-        { label: "Mission | Vision", href: "#mission" },
-        { label: "Board of Trustees", href: "#board" },
-        { label: "President Message", href: "#president" },
-        { label: "Scientific Board", href: "#scientific" },
-        { label: "Partners", href: "#partners" },
-        { label: "Our Milestone", href: "#milestone" },
+        { label: t("main.about.mission"), href: "#mission" },
+        { label: t("main.about.board"), href: "#board" },
+        { label: t("main.about.president"), href: "#president" },
+        { label: t("main.about.scientific"), href: "#scientific" },
+        { label: t("main.about.partners"), href: "#partners" },
+        { label: t("main.about.milestone"), href: "#milestone" },
       ],
     },
     {
       key: "institutes",
-      label: "Institutes",
+      label: t("main.institutes.label"),
       dropdown: [
-        { label: "Institute of Digital Technology (IDT)", href: "#idt" },
-        { label: "Institute of Digital Governance (IDG)", href: "#idg" },
-        {
-          label: "Institute of Digital Research and Innovation (IDRI)",
-          href: "#idri",
-        },
+        { label: t("main.institutes.idt"), href: "#idt" },
+        { label: t("main.institutes.idg"), href: "#idg" },
+        { label: t("main.institutes.idri"), href: "#idri" },
       ],
     },
     {
       key: "academic",
-      label: "Academic",
+      label: t("main.academic.label"),
       dropdown: [
-        { label: "Bachelor Programs", href: "#bachelor" },
-        { label: "Master Programs", href: "#master" },
-        { label: "PhD Programs", href: "#phd" },
-        { label: "Scholarships", href: "#scholarships" },
+        { label: t("main.academic.bachelor"), href: "#bachelor" },
+        { label: t("main.academic.master"), href: "#master" },
+        { label: t("main.academic.phd"), href: "#phd" },
+        { label: t("main.academic.scholarships"), href: "#scholarships" },
       ],
     },
     {
       key: "research",
-      label: "Research",
+      label: t("main.research.label"),
       dropdown: [
-        { label: "Research Centers", href: "#centers" },
-        { label: "Publications", href: "#publications" },
-        { label: "Innovation Hub", href: "#innovation" },
+        { label: t("main.research.centers"), href: "#centers" },
+        { label: t("main.research.publications"), href: "#publications" },
+        { label: t("main.research.innovation"), href: "#innovation" },
       ],
     },
     {
       key: "innovation",
-      label: "Innovation",
+      label: t("main.innovation.label"),
       dropdown: [
-        { label: "Tech Transfer Office", href: "#tech-transfer" },
-        { label: "Startups", href: "#startups" },
-        { label: "Partnerships", href: "#partnerships" },
+        { label: t("main.innovation.tto"), href: "#tech-transfer" },
+        { label: t("main.innovation.startups"), href: "#startups" },
+        { label: t("main.innovation.partnerships"), href: "#partnerships" },
       ],
     },
-    { key: "digicheck", label: "DigiCheck" },
+    { key: "digicheck", label: t("main.digicheck") },
   ];
 
   return (
@@ -97,13 +109,17 @@ const Header = () => {
       <div className="border-b border-primary-foreground/10">
         <div className="container-institute">
           <div className="flex items-center justify-between h-12">
-            <a href="#" className="flex items-center gap-4">
-              <img src={citaLogo} alt="CITA Logo" className="h-10 w-auto" />
-              <div className="hidden md:block">
-                <p className="text-primary-foreground font-bold text-sm">
+            <a href="#" className="flex items-center gap-3 sm:gap-4">
+              <img
+                src={citaLogo}
+                alt="CITA Logo"
+                className="h-8 md:h-10 w-auto"
+              />
+              <div className="block max-w-[180px] sm:max-w-[220px] leading-tight">
+                <p className="text-primary-foreground font-bold text-[10px] sm:text-xs md:text-sm leading-tight">
                   វិទ្យាស្ថានបច្ចេកវិទ្យា និង កសិកម្មកម្ពុជា
                 </p>
-                <p className="text-primary-foreground/70 text-xs">
+                <p className="text-primary-foreground/80 text-[9px] sm:text-[11px] md:text-xs leading-tight">
                   Cambodia Institute of Technology and Agriculture
                 </p>
               </div>
@@ -175,22 +191,89 @@ const Header = () => {
 
           {/* ===== RIGHT SIDE ===== */}
           <div className="hidden lg:flex items-center gap-4">
+            {/* Social icons */}
+            <div className="flex items-center gap-2 mr-1">
+              <a
+                href="#"
+                target="_blank"
+                rel="noreferrer noopener"
+                aria-label="Open Facebook"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-[#1877F2] text-white hover:brightness-110 transition"
+                title="Facebook"
+              >
+                {/* Facebook logo */}
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M22 12.06C22 6.505 17.523 2 12 2S2 6.505 2 12.06c0 4.99 3.657 9.128 8.437 9.94v-7.03H7.898v-2.91h2.539V9.845c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.47h-1.26c-1.243 0-1.63.776-1.63 1.572v1.888h2.773l-.443 2.91h-2.33v7.03C18.343 21.188 22 17.05 22 12.06z" />
+                </svg>
+              </a>
+              <a
+                href="#"
+                target="_blank"
+                rel="noreferrer noopener"
+                aria-label="Open YouTube"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-[#FF0000] text-white hover:brightness-110 transition"
+                title="YouTube"
+              >
+                {/* YouTube play */}
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M23.498 6.186a3.005 3.005 0 0 0-2.116-2.127C19.29 3.5 12 3.5 12 3.5s-7.29 0-9.382.559A3.005 3.005 0 0 0 .502 6.186C0 8.29 0 12 0 12s0 3.71.502 5.814a3.005 3.005 0 0 0 2.116 2.127C4.71 20.5 12 20.5 12 20.5s7.29 0 9.382-.559a3.005 3.005 0 0 0 2.116-2.127C24 15.71 24 12 24 12s0-3.71-.502-5.814ZM9.75 15.568V8.432L15.818 12 9.75 15.568Z" />
+                </svg>
+              </a>
+              <a
+                href="#"
+                target="_blank"
+                rel="noreferrer noopener"
+                aria-label="Open Telegram"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-[#229ED9] text-white hover:brightness-110 transition"
+                title="Telegram"
+              >
+                {/* Telegram paper plane */}
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M9.036 14.568 8.9 18.602c.287 0 .412-.123.561-.27l2.694-2.577 5.59 4.105c1.024.564 1.756.268 2.032-.95l3.682-17.25.001-.001c.327-1.523-.55-2.12-1.55-1.75L1.41 9.194c-1.48.576-1.458 1.404-.253 1.777l6.03 1.88L19.46 6.4c.574-.376 1.096-.168.666.208l-11.09 7.96Z" />
+                </svg>
+              </a>
+            </div>
             {/* LANGUAGE SWITCHER (FIXED) */}
             <DropdownMenu
               modal={false}
-              open={langOpen}
-              onOpenChange={setLangOpen}
+              open={langOpenDesktop}
+              onOpenChange={setLangOpenDesktop}
             >
               <DropdownMenuTrigger
                 className="inline-flex items-center gap-3 h-14 px-7
-                           bg-primary-foreground/15 hover:bg-primary-foreground/25
+                           bg-primary-foreground/30 hover:bg-primary-foreground/25
                            text-primary-foreground rounded-2xl
                            text-xl font-semibold leading-none transition-none
                            focus:outline-none focus-visible:outline-none ring-0 select-none"
               >
-                <Globe size={24} />
+                <img
+                  src={currentLocale === "en" ? usFlag : CambodiaFlag}
+                  alt={currentLocale === "en" ? "English" : "Khmer"}
+                  className="h-6 w-8 rounded-sm object-cover"
+                />
                 <span className="w-[64px] text-center whitespace-nowrap font-sans">
-                  {currentLocale === "en" ? "EN" : "ខ្មែរ"}
+                  {currentLocale === "en" ? "English" : "ខ្មែរ"}
                 </span>
                 <ChevronDown size={22} />
               </DropdownMenuTrigger>
@@ -200,9 +283,19 @@ const Header = () => {
                 className="min-w-[220px] text-lg animate-none will-change-auto"
               >
                 <DropdownMenuItem onClick={() => handleLocaleChange("en")}>
+                  <img
+                    src={usFlag}
+                    alt="English"
+                    className="h-5 w-7 mr-2 rounded-sm object-cover"
+                  />
                   English
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => handleLocaleChange("km")}>
+                  <img
+                    src={CambodiaFlag}
+                    alt="Khmer"
+                    className="h-5 w-7 mr-2 rounded-sm object-cover"
+                  />
                   ភាសាខ្មែរ
                 </DropdownMenuItem>
               </DropdownMenuContent>
@@ -219,22 +312,177 @@ const Header = () => {
         </div>
 
         {/* ===== MOBILE MENU ===== */}
-        {isMenuOpen && (
-          <div className="lg:hidden pb-4">
-            <nav className="flex flex-col gap-1">
-              {mainNavItems.map((item) => (
+        <div
+          className={`lg:hidden overflow-hidden transform transition-all duration-300 ease-out ${
+            isMenuOpen
+              ? "max-h-[80vh] opacity-100 translate-y-0"
+              : "max-h-0 opacity-0 -translate-y-2 pointer-events-none"
+          }`}
+        >
+          <div className="pb-4">
+            {/* Mobile language switcher */}
+            <div className="px-4 pt-2 pb-3">
+              {/* Social icons (mobile) */}
+              <div className="flex items-center gap-2 mb-3">
                 <a
-                  key={item.key}
                   href="#"
-                  className="px-4 py-3 text-primary-foreground hover:bg-primary-foreground/10 rounded"
-                  onClick={() => setIsMenuOpen(false)}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  aria-label="Open Facebook"
+                  className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-[#1877F2] text-white hover:brightness-110 transition"
+                  title="Facebook"
                 >
-                  {item.label}
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M22 12.06C22 6.505 17.523 2 12 2S2 6.505 2 12.06c0 4.99 3.657 9.128 8.437 9.94v-7.03H7.898v-2.91h2.539V9.845c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.47h-1.26c-1.243 0-1.63.776-1.63 1.572v1.888h2.773l-.443 2.91h-2.33v7.03C18.343 21.188 22 17.05 22 12.06z" />
+                  </svg>
                 </a>
-              ))}
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  aria-label="Open YouTube"
+                  className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-[#FF0000] text-white hover:brightness-110 transition"
+                  title="YouTube"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M23.498 6.186a3.005 3.005 0 0 0-2.116-2.127C19.29 3.5 12 3.5 12 3.5s-7.29 0-9.382.559A3.005 3.005 0 0 0 .502 6.186C0 8.29 0 12 0 12s0 3.71.502 5.814a3.005 3.005 0 0 0 2.116 2.127C4.71 20.5 12 20.5 12 20.5s7.29 0 9.382-.559a3.005 3.005 0 0 0 2.116-2.127C24 15.71 24 12 24 12s0-3.71-.502-5.814ZM9.75 15.568V8.432L15.818 12 9.75 15.568Z" />
+                  </svg>
+                </a>
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  aria-label="Open Telegram"
+                  className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-[#229ED9] text-white hover:brightness-110 transition"
+                  title="Telegram"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M9.036 14.568 8.9 18.602c.287 0 .412-.123.561-.27l2.694-2.577 5.59 4.105c1.024.564 1.756.268 2.032-.95l3.682-17.25.001-.001c.327-1.523-.55-2.12-1.55-1.75L1.41 9.194c-1.48.576-1.458 1.404-.253 1.777l6.03 1.88L19.46 6.4c.574-.376 1.096-.168.666.208l-11.09 7.96Z" />
+                  </svg>
+                </a>
+              </div>
+              <DropdownMenu
+                modal={false}
+                open={langOpenMobile}
+                onOpenChange={setLangOpenMobile}
+              >
+                <DropdownMenuTrigger
+                  className="w-full inline-flex items-center justify-between gap-3 h-12 px-4
+                             bg-yellow-600 hover:bg-primary-foreground/25 text-primary-foreground
+                             rounded-xl text-base font-semibold leading-none transition-none
+                             focus:outline-none focus-visible:outline-none ring-0 select-none"
+                >
+                  <div className="flex items-center gap-3">
+                    <img
+                      src={currentLocale === "en" ? usFlag : CambodiaFlag}
+                      alt={currentLocale === "en" ? "English" : "Khmer"}
+                      className="h-5 w-7 rounded-sm object-cover"
+                    />
+                    <span className="whitespace-nowrap font-sans">
+                      {currentLocale === "en" ? "English" : "ខ្មែរ"}
+                    </span>
+                  </div>
+                  <ChevronDown size={20} />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent
+                  align="start"
+                  className="min-w-[200px] text-base animate-none will-change-auto"
+                >
+                  <DropdownMenuItem onClick={() => handleLocaleChange("en")}>
+                    <img
+                      src={usFlag}
+                      alt="English"
+                      className="h-5 w-7 mr-2 rounded-sm object-cover"
+                    />
+                    English
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => handleLocaleChange("km")}>
+                    <img
+                      src={khFlag}
+                      alt="Khmer"
+                      className="h-5 w-7 mr-2 rounded-sm object-cover"
+                    />
+                    ភាសាខ្មែរ
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
+
+            {/* Mobile nav with collapsible sections */}
+            <nav className="flex flex-col">
+              {mainNavItems.map((item) =>
+                item.dropdown ? (
+                  <div
+                    key={item.key}
+                    className="border-t border-primary-foreground/10"
+                  >
+                    <button
+                      className="w-full flex items-center justify-between px-4 py-3 text-primary-foreground hover:bg-primary-foreground/10"
+                      onClick={() =>
+                        setMobileOpen((prev) => ({
+                          ...prev,
+                          [item.key]: !prev[item.key],
+                        }))
+                      }
+                    >
+                      <span className="font-semibold">{item.label}</span>
+                      <ChevronDown
+                        size={18}
+                        className={`transition-transform ${
+                          mobileOpen[item.key] ? "rotate-180" : "rotate-0"
+                        }`}
+                      />
+                    </button>
+                    {mobileOpen[item.key] && (
+                      <div className="pb-2">
+                        {item.dropdown.map((sub) => (
+                          <a
+                            key={sub.label}
+                            href={sub.href}
+                            className="block pl-8 pr-4 py-2 text-primary-foreground/90 hover:bg-primary-foreground/10"
+                            onClick={() => setIsMenuOpen(false)}
+                          >
+                            {sub.label}
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <a
+                    key={item.key}
+                    href="#"
+                    className="px-4 py-3 text-primary-foreground hover:bg-primary-foreground/10"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.label}
+                  </a>
+                )
+              )}
             </nav>
           </div>
-        )}
+        </div>
       </div>
     </header>
   );

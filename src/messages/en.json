@@ -14,7 +14,51 @@
     "admissions": "Admissions",
     "research": "Research",
     "news": "News & Events",
-    "contact": "Contact"
+    "contact": "Contact",
+    "top": {
+      "careers": "CAREERS",
+      "govtech": "GOVTECH",
+      "events": "EVENTS",
+      "resources": "RESOURCES",
+      "careerCenter": "CAREER CENTER"
+    },
+    "main": {
+      "about": {
+        "label": "About",
+        "mission": "Mission | Vision",
+        "board": "Board of Trustees",
+        "president": "President Message",
+        "scientific": "Scientific Board",
+        "partners": "Partners",
+        "milestone": "Our Milestone"
+      },
+      "institutes": {
+        "label": "Institutes",
+        "idt": "Institute of Digital Technology (IDT)",
+        "idg": "Institute of Digital Governance (IDG)",
+        "idri": "Institute of Digital Research and Innovation (IDRI)"
+      },
+      "academic": {
+        "label": "Academic",
+        "bachelor": "Bachelor Programs",
+        "master": "Master Programs",
+        "phd": "PhD Programs",
+        "scholarships": "Scholarships"
+      },
+      "research": {
+        "label": "Research",
+        "centers": "Research Centers",
+        "publications": "Publications",
+        "innovation": "Innovation Hub"
+      },
+      "innovation": {
+        "label": "Innovation",
+        "tto": "Tech Transfer Office",
+        "startups": "Startups",
+        "partnerships": "Partnerships"
+      },
+      "digicheck": "DigiCheck"
+    }
   },
   "home": {
     "hero": {

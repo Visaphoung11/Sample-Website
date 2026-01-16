@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="7410" height="3900" viewBox="0 0 741 390">
+  <rect width="741" height="390" fill="#b22234"/>
+  <g fill="#fff">
+    <rect y="30" width="741" height="30"/>
+    <rect y="90" width="741" height="30"/>
+    <rect y="150" width="741" height="30"/>
+    <rect y="210" width="741" height="30"/>
+    <rect y="270" width="741" height="30"/>
+    <rect y="330" width="741" height="30"/>
+  </g>
+  <rect width="296.4" height="210" fill="#3c3b6e"/>
+  <!-- simplified stars -->
+  <g fill="#fff" transform="translate(12,12)">
+    <g id="s">
+      <circle r="2"/>
+    </g>
+    <g id="row" transform="translate(0,0)">
+      <use href="#s" x="0"/>
+      <use href="#s" x="24"/>
+      <use href="#s" x="48"/>
+      <use href="#s" x="72"/>
+      <use href="#s" x="96"/>
+      <use href="#s" x="120"/>
+      <use href="#s" x="144"/>
+      <use href="#s" x="168"/>
+      <use href="#s" x="192"/>
+    </g>
+    <use href="#row" y="18"/>
+    <use href="#row" y="36"/>
+    <use href="#row" y="54"/>
+    <use href="#row" y="72"/>
+    <use href="#row" y="90"/>
+    <use href="#row" y="108"/>
+    <use href="#row" y="126"/>
+    <use href="#row" y="144"/>
+    <use href="#row" y="162"/>
+  </g>
+</svg>

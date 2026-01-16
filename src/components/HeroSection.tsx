@@ -22,16 +22,22 @@ const HeroSection = () => {
       <div className="container-institute relative z-10 py-16 md:py-24">
         <div className="max-w-3xl">
           <div className="accent-bar mb-6 animate-fade-in" />
-          
+
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6 animate-fade-in-up leading-tight">
             {t("title")}
           </h1>
-          
-          <p className="text-lg md:text-xl text-primary-foreground/90 mb-8 animate-fade-in-up max-w-2xl leading-relaxed" style={{ animationDelay: "0.1s" }}>
+
+          <p
+            className="text-lg md:text-xl text-primary-foreground/90 mb-8 animate-fade-in-up max-w-2xl leading-relaxed"
+            style={{ animationDelay: "0.1s" }}
+          >
             {t("subtitle")}
           </p>
 
-          <div className="flex flex-wrap gap-4 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
+          <div
+            className="flex flex-wrap gap-4 animate-fade-in-up"
+            style={{ animationDelay: "0.2s" }}
+          >
             <Button variant="hero" size="xl">
               {t("cta")}
               <ArrowRight className="ml-2" />

@@ -102,17 +102,15 @@ const HighlightedEventsSection = () => {
     <section id="highlighted-events" className="section-padding bg-background">
       <div className="container-institute">
         {/* Section Title */}
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-8">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-primary uppercase tracking-wide mb-8">
           {locale === "km" ? "ព្រឹត្តិការណ៍សំខាន់ៗ" : "Highlighted Events"}
         </h2>
 
         {/* Carousel */}
-        <div className="relative overflow-hidden">
+        <div className="relative overflow-visible">
           {/* Event Card with Animation */}
           <div
-            className={`relative rounded-xl overflow-hidden shadow-elevated bg-gradient-to-br ${
-              event.bgGradient
-            } transition-all duration-500 ease-out transform ${
+            className={`relative rounded-2xl overflow-hidden bg-white ring-1 ring-yellow-400/40 shadow-[0_10px_30px_rgba(234,179,8,0.25)] transition-all duration-500 ease-out transform ${
               isAnimating
                 ? direction === "right"
                   ? "-translate-x-4 opacity-0"
@@ -122,14 +120,15 @@ const HighlightedEventsSection = () => {
           >
             <div className="flex flex-col lg:flex-row min-h-[400px] lg:min-h-[500px]">
               {/* Left Content */}
-              <div className="flex-1 p-8 lg:p-12 flex flex-col justify-center relative z-10">
+              <div className="flex-1 p-8 lg:p-12 flex flex-col justify-center relative z-10 bg-black lg:rounded-l-2xl">
+                <div className="hidden lg:block absolute right-0 top-0 h-full w-[3px] bg-yellow-500/80" />
                 {/* Khmer Title */}
-                <h3 className="text-white text-2xl md:text-3xl lg:text-4xl font-bold mb-4 leading-tight">
+                <h3 className="text-yellow-300 text-2xl md:text-3xl lg:text-4xl font-bold mb-4 leading-tight">
                   {event.titleKm}
                 </h3>
 
                 {/* English Title */}
-                <h4 className="text-white text-xl md:text-2xl lg:text-3xl font-bold mb-6">
+                <h4 className="text-yellow-400 text-xl md:text-2xl lg:text-3xl font-bold mb-6 uppercase tracking-wide">
                   {event.titleEn}
                 </h4>
 
@@ -146,7 +145,7 @@ const HighlightedEventsSection = () => {
                 {/* Date and Location */}
                 <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 mt-4">
                   <div className="flex items-center gap-3 text-white/90">
-                    <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+                    <div className="w-10 h-10 bg-yellow-500/20 text-yellow-300 rounded-full flex items-center justify-center">
                       <Calendar size={20} />
                     </div>
                     <div>
@@ -155,7 +154,7 @@ const HighlightedEventsSection = () => {
                     </div>
                   </div>
                   <div className="flex items-center gap-3 text-white/90">
-                    <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+                    <div className="w-10 h-10 bg-yellow-500/20 text-yellow-300 rounded-full flex items-center justify-center">
                       <MapPin size={20} />
                     </div>
                     <div>
@@ -170,7 +169,7 @@ const HighlightedEventsSection = () => {
 
               {/* Right Content - Image */}
               <div className="flex-1 relative min-h-[200px] lg:min-h-full">
-                <div className="absolute inset-0 bg-gradient-to-l from-transparent to-black/20 z-10" />
+                <div className="absolute inset-0 bg-gradient-to-l from-transparent to-transparent z-10 pointer-events-none" />
                 <img
                   src={event.image}
                   alt={event.titleEn}
@@ -184,11 +183,11 @@ const HighlightedEventsSection = () => {
           <button
             onClick={prevSlide}
             disabled={isAnimating}
-            className="absolute left-3 lg:left-6 top-1/2 -translate-y-1/2 w-12 h-12 lg:w-16 lg:h-16 rounded-full flex items-center justify-center
-                       bg-white/90 text-primary shadow-xl border border-white/60 ring-1 ring-black/5 backdrop-blur-md
-                       hover:bg-primary hover:text-white hover:shadow-2xl hover:scale-105
+            className="absolute -left-6 lg:-left-8 top-1/2 -translate-y-1/2 z-30 pointer-events-auto w-12 h-12 lg:w-16 lg:h-16 rounded-full flex items-center justify-center
+                       bg-yellow-400 text-black shadow-xl border border-yellow-300 ring-1 ring-yellow-500/40
+                       hover:bg-yellow-500 hover:shadow-2xl hover:scale-105
                        transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed
-                       focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60"
+                       focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-500/60"
             aria-label="Previous event"
           >
             <ChevronLeft size={28} aria-hidden="true" focusable="false" />
@@ -197,11 +196,11 @@ const HighlightedEventsSection = () => {
           <button
             onClick={nextSlide}
             disabled={isAnimating}
-            className="absolute right-3 lg:right-6 top-1/2 -translate-y-1/2 w-12 h-12 lg:w-16 lg:h-16 rounded-full flex items-center justify-center
-                       bg-white/90 text-primary shadow-xl border border-white/60 ring-1 ring-black/5 backdrop-blur-md
-                       hover:bg-primary hover:text-white hover:shadow-2xl hover:scale-105
+            className="absolute -right-6 lg:-right-8 top-1/2 -translate-y-1/2 z-30 pointer-events-auto w-12 h-12 lg:w-16 lg:h-16 rounded-full flex items-center justify-center
+                       bg-yellow-400 text-black shadow-xl border border-yellow-300 ring-1 ring-yellow-500/40
+                       hover:bg-yellow-500 hover:shadow-2xl hover:scale-105
                        transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed
-                       focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60"
+                       focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-500/60"
             aria-label="Next event"
           >
             <ChevronRight size={28} aria-hidden="true" focusable="false" />
@@ -219,8 +218,8 @@ const HighlightedEventsSection = () => {
               }
               className={`h-3 rounded-full transition-all duration-300 ${
                 index === currentSlide
-                  ? "bg-primary w-8"
-                  : "bg-primary/30 hover:bg-primary/50 w-3"
+                  ? "bg-yellow-500 w-8"
+                  : "bg-yellow-500/30 hover:bg-yellow-500/50 w-3"
               }`}
               aria-label={`Go to slide ${index + 1}`}
             />

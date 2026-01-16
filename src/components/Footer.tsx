@@ -1,5 +1,13 @@
 import { useTranslations } from "@/lib/i18n";
-import { Facebook, Twitter, Linkedin, Youtube, Mail, Phone, MapPin } from "lucide-react";
+import {
+  Facebook,
+  Twitter,
+  Linkedin,
+  Youtube,
+  Mail,
+  Phone,
+  MapPin,
+} from "lucide-react";
 
 const Footer = () => {
   const t = useTranslations("footer");
@@ -21,15 +29,20 @@ const Footer = () => {
           <div className="sm:col-span-2 lg:col-span-1">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 bg-accent rounded-lg flex items-center justify-center">
-                <span className="text-accent-foreground font-bold text-xl">IDT</span>
+                <span className="text-accent-foreground font-bold text-xl">
+                  IDT
+                </span>
               </div>
               <div>
-                <p className="font-semibold leading-tight">Institute of Digital</p>
+                <p className="font-semibold leading-tight">
+                  Institute of Digital
+                </p>
                 <p className="text-primary-foreground/70 text-sm">Technology</p>
               </div>
             </div>
             <p className="text-primary-foreground/70 text-sm leading-relaxed mb-6">
-              Leading public research and education institution dedicated to accelerating Cambodia's digital transformation.
+              Leading public research and education institution dedicated to
+              accelerating Cambodia's digital transformation.
             </p>
             <div className="flex gap-3">
               {socialLinks.map((social) => {
@@ -50,7 +63,9 @@ const Footer = () => {
 
           {/* Address */}
           <div>
-            <h4 className="font-semibold mb-4">{t("address.title")}</h4>
+            <h4 className="font-semibold mb-4 text-white">
+              {t("address.title")}
+            </h4>
             <div className="space-y-3 text-primary-foreground/70 text-sm">
               <div className="flex gap-3">
                 <MapPin size={18} className="text-accent shrink-0 mt-0.5" />
@@ -73,24 +88,65 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-semibold mb-4">Quick Links</h4>
+            <h4 className="font-semibold mb-4 text-white">Quick Links</h4>
             <ul className="space-y-2 text-primary-foreground/70 text-sm">
-              <li><a href="#" className="hover:text-accent transition-colors">{tNav("about")}</a></li>
-              <li><a href="#programs" className="hover:text-accent transition-colors">{tNav("academics")}</a></li>
-              <li><a href="#" className="hover:text-accent transition-colors">{tNav("admissions")}</a></li>
-              <li><a href="#" className="hover:text-accent transition-colors">{tNav("research")}</a></li>
-              <li><a href="#news" className="hover:text-accent transition-colors">{tNav("news")}</a></li>
+              <li>
+                <a href="#" className="hover:text-accent transition-colors">
+                  {tNav("about")}
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#programs"
+                  className="hover:text-accent transition-colors"
+                >
+                  {tNav("academics")}
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-accent transition-colors">
+                  {tNav("admissions")}
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-accent transition-colors">
+                  {tNav("research")}
+                </a>
+              </li>
+              <li>
+                <a href="#news" className="hover:text-accent transition-colors">
+                  {tNav("news")}
+                </a>
+              </li>
             </ul>
           </div>
 
           {/* Information Links */}
           <div>
-            <h4 className="font-semibold mb-4">{t("links.title")}</h4>
+            <h4 className="font-semibold mb-4 text-white">
+              {t("links.title")}
+            </h4>
             <ul className="space-y-2 text-primary-foreground/70 text-sm">
-              <li><a href="#" className="hover:text-accent transition-colors">{t("links.privacy")}</a></li>
-              <li><a href="#" className="hover:text-accent transition-colors">{t("links.terms")}</a></li>
-              <li><a href="#" className="hover:text-accent transition-colors">{t("links.careers")}</a></li>
-              <li><a href="#" className="hover:text-accent transition-colors">{t("links.faq")}</a></li>
+              <li>
+                <a href="#" className="hover:text-accent transition-colors">
+                  {t("links.privacy")}
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-accent transition-colors">
+                  {t("links.terms")}
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-accent transition-colors">
+                  {t("links.careers")}
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-accent transition-colors">
+                  {t("links.faq")}
+                </a>
+              </li>
             </ul>
           </div>
         </div>
